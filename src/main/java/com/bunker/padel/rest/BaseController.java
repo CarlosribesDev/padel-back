@@ -1,6 +1,6 @@
 package com.bunker.padel.rest;
 
-import com.bunker.padel.model.JsonModel;
+import com.bunker.padel.model.JsonDTO;
 import com.bunker.padel.persistence.entity.BaseEntity;
 import com.bunker.padel.service.BaseService;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class BaseController <T extends BaseEntity,ID, DTO extends JsonModel> {
+public class BaseController <T extends BaseEntity,ID, DTO extends JsonDTO> {
 
     protected final BaseService<T, ID, DTO> service;
 
