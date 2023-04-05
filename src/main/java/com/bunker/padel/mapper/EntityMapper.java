@@ -6,7 +6,7 @@ import java.util.stream.StreamSupport;
 
 public interface EntityMapper <E, M> {
 
-    M entityToModel(final E e);
+    M entityToModel(E e);
 
     default List<M> entitiesToModels(final List<E> e){
         if(e == null) return null;
@@ -20,7 +20,7 @@ public interface EntityMapper <E, M> {
         return StreamSupport.stream(e.spliterator(), false).map(this::entityToModel).collect(Collectors.toList());
     }
 
-    E modelToEntity(final M m);
+    E modelToEntity(M m);
 
     default List<E> modelsToEntities(final List<M> m){
         if(m == null) return null;
