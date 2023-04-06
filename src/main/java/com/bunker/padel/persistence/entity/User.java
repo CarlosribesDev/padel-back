@@ -9,11 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+
+@Getter
+@Setter
 @Entity
 @Table(name="APP_USER")
 public class User extends BaseEntity implements UserDetails {

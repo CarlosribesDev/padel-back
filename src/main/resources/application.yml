@@ -2,9 +2,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: true
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: h4kxqvwedh5t7q1z8yow
-    password: pscale_pw_wM1vVLHio8vV71OU7Fh5vadh3GRLUL4vN4B6eZZIifr
-    url: jdbc:mysql://eu-west.connect.psdb.cloud/bunker?sslMode=VERIFY_IDENTITY
+    username: root
+    password: bunker
+    url: jdbc:mysql://localhost:3306/bunker
