@@ -1,11 +1,13 @@
 package com.bunker.padel.persistence.repository;
 
-import com.bunker.padel.persistence.entity.UserEntity;
+import com.bunker.padel.persistence.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<UserEntity, Long> {
+import java.util.Optional;
 
-    boolean existsByName(String name);
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    Optional<User> findByUsername(String username);
 
 }
 

@@ -1,9 +1,9 @@
 package com.bunker.padel.mapper;
 
 import com.bunker.padel.model.UserDTO;
-import com.bunker.padel.persistence.entity.UserEntity;
+import com.bunker.padel.persistence.entity.User;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface UserMapper extends EntityMapper<UserEntity, UserDTO> {
+public interface UserMapper extends EntityMapper<User, UserDTO> {
 }
