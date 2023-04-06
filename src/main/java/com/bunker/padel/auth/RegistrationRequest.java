@@ -1,15 +1,12 @@
-package com.bunker.padel.model;
+package com.bunker.padel.auth;
 
 import lombok.Data;
 
-
 @Data
-public class UserDTO implements JsonDTO {
-    private Long id;
+public class RegistrationRequest {
     private String name;
     private String surname;
     private String username;
     private String email;
+    private String password;
 }
-
-

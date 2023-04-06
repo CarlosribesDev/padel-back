@@ -1,6 +1,6 @@
 package com.bunker.padel.config;
 
-import com.bunker.padel.persistence.repository.UserRepository;
+import com.bunker.padel.auth.UserAuthRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,10 +17,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-    private final UserRepository userRepository;
+    private final UserAuthRepository userAuthRepository;
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> this.userRepository.findByUsername(username)
+        return username -> this.userAuthRepository.findByUsername(username)
                 .orElseThrow(()-> new UsernameNotFoundException("User not found"));
 
     }

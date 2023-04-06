@@ -1,9 +1,7 @@
 package com.bunker.padel.auth;
 
 import com.bunker.padel.config.JwtService;
-import com.bunker.padel.mapper.UserMapper;
 import com.bunker.padel.model.Role;
-import com.bunker.padel.model.UserDTO;
 import com.bunker.padel.persistence.entity.User;
 import com.bunker.padel.persistence.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,18 +15,27 @@ import org.springframework.stereotype.Service;
 public class AuthenticationService {
 
     private final UserRepository userRepository;
-    private final UserMapper userMapper;
+    private final UserAuthRepository userAuthRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(UserDTO userDTO) {
-        User user = this.userMapper.modelToEntity(userDTO);
-        user.setPassword(this.passwordEncoder.encode(userDTO.getPassword()));
-        user.setRole(Role.USER);
+
+    public AuthenticationResponse register(RegistrationRequest request) {
+        final User user = new User();
+        user.setName(request.getName());
+        user.setEmail(request.getEmail());
+        user.setSurname(request.getSurname());
+        user.setUsername(request.getUsername());
+
+        final UserAuth userAuth = new UserAuth();
+        userAuth.setUsername(request.getUsername());
+        userAuth.setPassword(this.passwordEncoder.encode(request.getPassword()));
+        userAuth.setRole(Role.USER);
 
         this.userRepository.save(user);
-        String jwtToken = this.jwtService.generateToken(user);
+        this.userAuthRepository.save(userAuth);
+        String jwtToken = this.jwtService.generateToken(userAuth);
 
         return AuthenticationResponse.builder().token(jwtToken).build();
     }
@@ -40,11 +47,9 @@ public class AuthenticationService {
                         request.getPassword())
         );
 
-        User user = this.userRepository.findByUsername(request.getUsername()).orElseThrow();
-
-        String jwtToken = this.jwtService.generateToken(user);
+        final UserAuth user = this.userAuthRepository.findByUsername(request.getUsername()).orElseThrow();
+        final String jwtToken = this.jwtService.generateToken(user);
 
         return AuthenticationResponse.builder().token(jwtToken).build();
-
     }
 }
