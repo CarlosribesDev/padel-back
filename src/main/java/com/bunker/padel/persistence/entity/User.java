@@ -3,6 +3,9 @@ package com.bunker.padel.persistence.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Getter
 @Setter
@@ -19,6 +22,9 @@ public class User extends BaseEntity {
 
     @Column(nullable = false)
     private String email;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Booking> bookings = new HashSet<>();
 
 
 }

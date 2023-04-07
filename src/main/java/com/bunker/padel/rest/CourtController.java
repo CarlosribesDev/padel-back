@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/court")
 public class CourtController extends BaseController <Court, Long, CourtDTO> {
-    public CourtController(CourtService service) {
-        super(service);
+    public CourtController(final CourtService courtService) {
+        super(courtService);
     }
 }

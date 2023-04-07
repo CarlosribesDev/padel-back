@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/user")
 public class UserController extends BaseController<User, Long, UserDTO> {
-    protected UserController(UserService service) {
-        super(service);
+    protected UserController(final UserService userService) {
+        super(userService);
     }
 }

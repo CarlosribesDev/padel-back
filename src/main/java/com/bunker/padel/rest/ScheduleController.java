@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/schedule")
 public class ScheduleController extends BaseController<Schedule, Long, ScheduleDTO> {
-    public ScheduleController(ScheduleService service) {
-        super(service);
+    public ScheduleController(final ScheduleService scheduleService) {
+        super(scheduleService);
     }
 }
