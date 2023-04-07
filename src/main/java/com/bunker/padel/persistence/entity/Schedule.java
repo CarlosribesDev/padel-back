@@ -12,11 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "schedule")
-public class Schedule {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Schedule extends BaseEntity {
 
     private String name;
 

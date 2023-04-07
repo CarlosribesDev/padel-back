@@ -1,6 +1,6 @@
 package com.bunker.padel.auth;
 
-import com.bunker.padel.model.Role;
+import com.bunker.padel.model.constants.Role;
 import com.bunker.padel.persistence.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
