@@ -50,6 +50,11 @@ public class AuthenticationService {
         final UserAuth user = this.userAuthRepository.findByUsername(request.getUsername()).orElseThrow();
         final String jwtToken = this.jwtService.generateToken(user);
 
-        return AuthenticationResponse.builder().token(jwtToken).build();
+        return AuthenticationResponse.builder().token(jwtToken).username(request.getUsername()).build();
+    }
+
+    public Role getUserRole(final String username) {
+        final UserAuth user = this.userAuthRepository.findByUsername(username).orElse(new UserAuth());
+        return user.getRole();
     }
 }
