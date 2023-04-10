@@ -22,8 +22,11 @@ public class UserService extends BaseServiceImpl<User, Long, UserDTO> {
     public List<UserDTO> findAll(final Map<String, String> filters) {
         Specification<User> specification = Specification.where(null);
 
-        if(filters.containsKey("username")) {
-            specification = specification.and(UserSpecifications.byUsername(filters.get("username")));
+        if(filters.containsKey("usernames") && filters.get("usernames").length() > 0) {
+
+            final List<String> usernames = List.of(filters.get("usernames").split(","));
+
+            specification = specification.and(UserSpecifications.byUsername(usernames));
         }
 
         final List<User> entities = this.repository.findAll(specification);

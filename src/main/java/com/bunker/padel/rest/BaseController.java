@@ -16,7 +16,7 @@ public class BaseController <T extends BaseEntity,ID, DTO extends JsonDTO> {
     protected final BaseService<T, ID, DTO> service;
 
     @GetMapping
-    public ResponseEntity<List<DTO>> findAll(@RequestBody Map<String, String> filters)
+    public ResponseEntity<List<DTO>> findAll(@RequestParam final Map<String, String> filters)
     {
         return ResponseEntity.ok(service.findAll(filters));
     }
