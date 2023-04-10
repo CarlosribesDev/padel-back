@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 public class BaseController <T extends BaseEntity,ID, DTO extends JsonDTO> {
@@ -15,8 +16,9 @@ public class BaseController <T extends BaseEntity,ID, DTO extends JsonDTO> {
     protected final BaseService<T, ID, DTO> service;
 
     @GetMapping
-    public ResponseEntity<List<DTO>> findAll() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<List<DTO>> findAll(@RequestBody Map<String, String> filters)
+    {
+        return ResponseEntity.ok(service.findAll(filters));
     }
 
     @GetMapping("/{id}")

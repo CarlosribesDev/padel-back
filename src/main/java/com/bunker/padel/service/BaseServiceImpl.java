@@ -7,16 +7,16 @@ import com.bunker.padel.persistence.repository.BaseRepository;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-
+import java.util.Map;
 
 
 @RequiredArgsConstructor
 public abstract class BaseServiceImpl<T extends BaseEntity, ID, DTO extends JsonDTO> implements BaseService<T, ID, DTO> {
-    private final BaseRepository<T, ID> repository;
-    private final EntityMapper<T, DTO> entityMapper;
+    protected final BaseRepository<T, ID> repository;
+    protected final EntityMapper<T, DTO> entityMapper;
 
     @Override
-    public List<DTO> findAll() {
+    public List<DTO> findAll(Map<String, String> filers) {
         final List<T> entities = this.repository.findAll();
         return this.entityMapper.entitiesToModels(entities);
     }
