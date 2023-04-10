@@ -3,8 +3,8 @@ package com.bunker.padel.service;
 import com.bunker.padel.mapper.EntityMapper;
 import com.bunker.padel.model.JsonDTO;
 import com.bunker.padel.persistence.entity.BaseEntity;
+import com.bunker.padel.persistence.repository.BaseRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 public abstract class BaseServiceImpl<T extends BaseEntity, ID, DTO extends JsonDTO> implements BaseService<T, ID, DTO> {
-    private final JpaRepository<T, ID> repository;
+    private final BaseRepository<T, ID> repository;
     private final EntityMapper<T, DTO> entityMapper;
 
     @Override
