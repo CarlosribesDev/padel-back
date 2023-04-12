@@ -1,12 +1,11 @@
 package com.bunker.padel.persistence.entity;
 
 import com.bunker.padel.model.constants.CourtType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -18,4 +17,11 @@ public class Court extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private CourtType type;
+
+    @ManyToOne
+    @JoinColumn(name = "schedule_id")
+    private Schedule schedule;
+
+    private BigDecimal price;
+
 }

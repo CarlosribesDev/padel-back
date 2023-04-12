@@ -6,31 +6,31 @@ import java.util.stream.StreamSupport;
 
 public interface EntityMapper <E, M> {
 
-    M entityToModel(E e);
+    M entityToDTO(E e);
 
-    default List<M> entitiesToModels(final List<E> e){
+    default List<M> entitiesToDTOs(final List<E> e){
         if(e == null) return null;
 
-        return e.stream().map(this::entityToModel).collect(Collectors.toList());
+        return e.stream().map(this::entityToDTO).collect(Collectors.toList());
     }
 
-    default List<M> entitiesToModels(final Iterable<E> e){
+    default List<M> entitiesToDTOs(final Iterable<E> e){
         if(e == null) return null;
 
-        return StreamSupport.stream(e.spliterator(), false).map(this::entityToModel).collect(Collectors.toList());
+        return StreamSupport.stream(e.spliterator(), false).map(this::entityToDTO).collect(Collectors.toList());
     }
 
-    E modelToEntity(M m);
+    E DTOToEntity(M m);
 
-    default List<E> modelsToEntities(final List<M> m){
+    default List<E> DTOsToEntities(final List<M> m){
         if(m == null) return null;
 
-        return m.stream().map(this::modelToEntity).collect(Collectors.toList());
+        return m.stream().map(this::DTOToEntity).collect(Collectors.toList());
     }
 
-    default List<E> modelsToEntities(final Iterable<M> m){
+    default List<E> DTOsToEntities(final Iterable<M> m){
         if(m == null) return null;
 
-        return StreamSupport.stream(m.spliterator(), false).map(this::modelToEntity).collect(Collectors.toList());
+        return StreamSupport.stream(m.spliterator(), false).map(this::DTOToEntity).collect(Collectors.toList());
     }
 }

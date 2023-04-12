@@ -18,27 +18,27 @@ public abstract class BaseServiceImpl<T extends BaseEntity, ID, DTO extends Json
     @Override
     public List<DTO> findAll(Map<String, String> filers) {
         final List<T> entities = this.repository.findAll();
-        return this.entityMapper.entitiesToModels(entities);
+        return this.entityMapper.entitiesToDTOs(entities);
     }
 
     @Override
     public DTO findById(ID id) {
         final T entity = this.repository.findById(id).orElse(null);
-        return this.entityMapper.entityToModel(entity);
+        return this.entityMapper.entityToDTO(entity);
     }
 
     @Override
     public DTO save(DTO dto) {
-        final T entityToSave = this.entityMapper.modelToEntity(dto);
+        final T entityToSave = this.entityMapper.DTOToEntity(dto);
         final T entitySaved = this.repository.save(entityToSave);
-        return this.entityMapper.entityToModel(entitySaved);
+        return this.entityMapper.entityToDTO(entitySaved);
     }
 
     @Override
     public DTO update(ID id, DTO dto) {
-        final T entityToSave = this.entityMapper.modelToEntity(dto);
+        final T entityToSave = this.entityMapper.DTOToEntity(dto);
         final T entitySaved = this.repository.save(entityToSave);
-        return this.entityMapper.entityToModel(entitySaved);
+        return this.entityMapper.entityToDTO(entitySaved);
     }
 
     @Override

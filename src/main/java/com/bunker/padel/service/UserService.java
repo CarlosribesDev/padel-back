@@ -30,6 +30,6 @@ public class UserService extends BaseServiceImpl<User, Long, UserDTO> {
         }
 
         final List<User> entities = this.repository.findAll(specification);
-        return this.entityMapper.entitiesToModels(entities);
+        return this.entityMapper.entitiesToDTOs(entities);
     }
 }
