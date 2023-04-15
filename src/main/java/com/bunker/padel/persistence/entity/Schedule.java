@@ -16,7 +16,7 @@ public class Schedule extends BaseEntity {
 
     private String name;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "schedule_hours", joinColumns = @JoinColumn(name = "schedule_id"))
     @Column(name = "hour")
     private List<LocalTime> hours = new ArrayList<>();
