@@ -23,9 +23,7 @@ public class UserService extends BaseServiceImpl<User, Long, UserDTO> {
         Specification<User> specification = Specification.where(null);
 
         if(filters.containsKey("usernames") && filters.get("usernames").length() > 0) {
-
             final List<String> usernames = List.of(filters.get("usernames").split(","));
-
             specification = specification.and(UserSpecifications.byUsername(usernames));
         }
 
