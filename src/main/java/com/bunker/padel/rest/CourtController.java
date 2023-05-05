@@ -1,15 +1,27 @@
 package com.bunker.padel.rest;
 
-import com.bunker.padel.model.CourtDTO;
-import com.bunker.padel.persistence.entity.Court;
+import com.bunker.padel.dto.CourtDTO;
 import com.bunker.padel.service.CourtService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/court")
-public class CourtController extends BaseController <Court, Long, CourtDTO> {
-    public CourtController(final CourtService courtService) {
-        super(courtService);
+public class CourtController {
+
+    private final CourtService courtService;
+
+    @GetMapping
+    public ResponseEntity<List<CourtDTO>> findAll() {
+        return ResponseEntity.ok(this.courtService.findAll());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<CourtDTO> update(final @PathVariable Long id, final @RequestBody CourtDTO courtDTO) {
+        return ResponseEntity.ok(this.courtService.update(id, courtDTO));
     }
 }

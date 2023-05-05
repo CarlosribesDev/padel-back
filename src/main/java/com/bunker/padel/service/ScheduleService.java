@@ -1,15 +1,14 @@
 package com.bunker.padel.service;
 
-import com.bunker.padel.mapper.ScheduleMapper;
-import com.bunker.padel.model.ScheduleDTO;
-import com.bunker.padel.persistence.entity.Schedule;
-import com.bunker.padel.persistence.repository.ScheduleRepository;
-import org.springframework.stereotype.Service;
+import com.bunker.padel.dto.ScheduleDTO;
 
-@Service
-public class ScheduleService extends BaseServiceImpl<Schedule, Long, ScheduleDTO> {
+import java.util.List;
 
-    public ScheduleService(final ScheduleRepository scheduleRepository,  final ScheduleMapper scheduleMapper) {
-        super(scheduleRepository, scheduleMapper);
-    }
+public interface ScheduleService {
+
+    List<ScheduleDTO> findAll();
+
+    ScheduleDTO create(final ScheduleDTO scheduleDTO);
+
+    void deleteById(final Long id);
 }

@@ -1,6 +1,6 @@
 package com.bunker.padel.mapper;
 
-import com.bunker.padel.model.BookingDTO;
+import com.bunker.padel.dto.BookingDTO;
 import com.bunker.padel.persistence.entity.Booking;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

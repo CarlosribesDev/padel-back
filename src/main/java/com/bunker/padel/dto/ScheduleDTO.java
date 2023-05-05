@@ -1,4 +1,4 @@
-package com.bunker.padel.model;
+package com.bunker.padel.dto;
 
 
 import lombok.Data;

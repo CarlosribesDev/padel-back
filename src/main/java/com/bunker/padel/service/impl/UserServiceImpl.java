@@ -1,7 +1,7 @@
 package com.bunker.padel.service.impl;
 
 import com.bunker.padel.mapper.UserMapper;
-import com.bunker.padel.model.UserDTO;
+import com.bunker.padel.dto.UserDTO;
 import com.bunker.padel.params.UserParams;
 import com.bunker.padel.persistence.entity.User;
 import com.bunker.padel.persistence.repository.UserRepository;
@@ -22,19 +22,19 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
     @Override
-    public UserDTO save(UserDTO userDTO) {
+    public UserDTO create(final UserDTO userDTO) {
         final User user = this.userRepository.save(this.userMapper.DTOToEntity(userDTO));
         return this.userMapper.entityToDTO(user);
     }
 
     @Override
-    public UserDTO findById(Long id) {
+    public UserDTO findById(final Long id) {
         final User user = this.userRepository.findById(id).orElse(null);
         return this.userMapper.entityToDTO(user);
     }
 
     @Override
-    public List<UserDTO> findBySearch(UserParams params) {
+    public List<UserDTO> findBySearch(final UserParams params) {
         final Specification<User> specification = UserSpecifications.byUsername(params.getUsernames());
 
         final List<User> users = this.userRepository.findAll(specification);

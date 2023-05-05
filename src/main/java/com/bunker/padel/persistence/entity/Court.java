@@ -1,6 +1,6 @@
 package com.bunker.padel.persistence.entity;
 
-import com.bunker.padel.model.constants.CourtType;
+import com.bunker.padel.constants.CourtType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

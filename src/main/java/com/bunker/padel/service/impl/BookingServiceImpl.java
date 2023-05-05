@@ -1,7 +1,7 @@
 package com.bunker.padel.service.impl;
 
 import com.bunker.padel.mapper.BookingMapper;
-import com.bunker.padel.model.BookingDTO;
+import com.bunker.padel.dto.BookingDTO;
 import com.bunker.padel.params.BookingParams;
 import com.bunker.padel.persistence.entity.Booking;
 import com.bunker.padel.persistence.repository.BookingRepository;
@@ -22,19 +22,19 @@ public class BookingServiceImpl implements BookingService {
 
 
     @Override
-    public BookingDTO save(BookingDTO userDTO) {
+    public BookingDTO save(final BookingDTO userDTO) {
         final Booking booking = this.bookingRepository.save(this.bookingMapper.DTOToEntity(userDTO));
         return this.bookingMapper.entityToDTO(booking);
     }
 
     @Override
-    public BookingDTO findById(Long id) {
+    public BookingDTO findById(final Long id) {
         final Booking booking = this.bookingRepository.findById(id).orElse(null);
         return this.bookingMapper.entityToDTO(booking);
     }
 
     @Override
-    public List<BookingDTO> findBySearch(BookingParams params) {
+    public List<BookingDTO> findBySearch(final BookingParams params) {
         final LocalDate date = params.getInDate();
         final Specification<Booking> specification =
                 BookingSpecifications.dateTimeGreaterThan(date == null ? null : date.atStartOfDay()).and(
@@ -45,7 +45,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(final Long id) {
         this.bookingRepository.deleteById(id);
     }
 }

@@ -1,15 +1,12 @@
 package com.bunker.padel.service;
 
-import com.bunker.padel.mapper.CourtMapper;
-import com.bunker.padel.model.CourtDTO;
-import com.bunker.padel.persistence.entity.Court;
-import com.bunker.padel.persistence.repository.CourtRepository;
-import org.springframework.stereotype.Service;
+import com.bunker.padel.dto.CourtDTO;
 
-@Service
-public class CourtService extends BaseServiceImpl <Court, Long, CourtDTO> {
+import java.util.List;
 
-    public CourtService(final CourtRepository repository,final CourtMapper courtMapper) {
-        super(repository, courtMapper);
-    }
+public interface CourtService {
+
+    CourtDTO update(final Long id, final CourtDTO courtDTO);
+
+    List<CourtDTO> findAll();
 }

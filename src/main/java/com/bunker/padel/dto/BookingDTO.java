@@ -1,4 +1,4 @@
-package com.bunker.padel.model;
+package com.bunker.padel.dto;
 
 import com.bunker.padel.persistence.entity.Court;
 import lombok.Data;

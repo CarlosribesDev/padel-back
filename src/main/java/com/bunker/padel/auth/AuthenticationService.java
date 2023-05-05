@@ -1,7 +1,7 @@
 package com.bunker.padel.auth;
 
 import com.bunker.padel.config.JwtService;
-import com.bunker.padel.model.constants.Role;
+import com.bunker.padel.constants.Role;
 import com.bunker.padel.persistence.entity.User;
 import com.bunker.padel.persistence.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

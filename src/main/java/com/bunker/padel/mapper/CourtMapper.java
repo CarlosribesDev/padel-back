@@ -1,6 +1,6 @@
 package com.bunker.padel.mapper;
 
-import com.bunker.padel.model.CourtDTO;
+import com.bunker.padel.dto.CourtDTO;
 import com.bunker.padel.persistence.entity.Court;
 import org.mapstruct.Mapper;
 

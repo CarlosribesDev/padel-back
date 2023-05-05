@@ -1,4 +1,4 @@
-package com.bunker.padel.model.constants;
+package com.bunker.padel.constants;
 
 public enum CourtType {
     OPEN,INDOOR

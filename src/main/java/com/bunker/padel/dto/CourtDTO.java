@@ -1,6 +1,6 @@
-package com.bunker.padel.model;
+package com.bunker.padel.dto;
 
-import com.bunker.padel.model.constants.CourtType;
+import com.bunker.padel.constants.CourtType;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Data
 public class CourtDTO implements JsonDTO {
 
-    private String id;
+    private Long id;
     private String name;
     private CourtType type;
     private ScheduleDTO schedule;

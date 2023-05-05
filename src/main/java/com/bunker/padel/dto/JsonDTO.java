@@ -1,4 +1,4 @@
-package com.bunker.padel.model;
+package com.bunker.padel.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

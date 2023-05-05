@@ -1,15 +1,15 @@
 package com.bunker.padel.service;
 
-import com.bunker.padel.model.UserDTO;
+import com.bunker.padel.dto.UserDTO;
 import com.bunker.padel.params.UserParams;
 
 import java.util.List;
 
 public interface UserService {
 
-    UserDTO save(UserDTO userDTO);
+    UserDTO create(final UserDTO userDTO);
 
-    UserDTO findById(Long id);
+    UserDTO findById(final Long id);
 
-    List<UserDTO> findBySearch(UserParams params);
+    List<UserDTO> findBySearch(final UserParams params);
 }

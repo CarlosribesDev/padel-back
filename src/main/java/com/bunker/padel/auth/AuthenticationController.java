@@ -1,6 +1,6 @@
 package com.bunker.padel.auth;
 
-import com.bunker.padel.model.constants.Role;
+import com.bunker.padel.constants.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
