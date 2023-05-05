@@ -23,6 +23,4 @@ public class Booking extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-
 }

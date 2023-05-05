@@ -8,7 +8,11 @@ import java.util.List;
 public class UserSpecifications {
 
     public static Specification<User> byUsername(List<String> usernames) {
-        return (root, criteriaQuery, criteriaBuilder) ->
-                criteriaBuilder.in(root.get("username")).value(usernames);
+        return (root, criteriaQuery, criteriaBuilder) -> {
+                if(usernames == null) {
+                    return null;
+                }
+             return criteriaBuilder.in(root.get("username")).value(usernames);
+        };
     }
 }

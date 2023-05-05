@@ -8,12 +8,20 @@ import java.time.LocalDateTime;
 public class BookingSpecifications {
 
     public static Specification<Booking> dateTimeGreaterThan(final LocalDateTime dateTime) {
-        return (root, criteriaQuery, criteriaBuilder) ->
-                criteriaBuilder.greaterThan(root.get("dateTime"), dateTime);
+        return (root, criteriaQuery, criteriaBuilder) -> {
+            if(dateTime == null) {
+                return null;
+            }
+            return  criteriaBuilder.greaterThan(root.get("dateTime"), dateTime);
+        };
     }
 
     public static Specification<Booking> dateTimeLessThan(final LocalDateTime dateTime) {
-        return (root, query, criteriaBuilder) ->
-                criteriaBuilder.lessThan(root.get("dateTime"), dateTime);
+        return (root, query, criteriaBuilder) -> {
+            if(dateTime == null) {
+                return null;
+            }
+            return criteriaBuilder.lessThan(root.get("dateTime"), dateTime);
+        };
     }
 }
