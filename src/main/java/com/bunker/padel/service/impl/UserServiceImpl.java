@@ -22,12 +22,6 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
     @Override
-    public UserDTO create(final UserDTO userDTO) {
-        final User user = this.userRepository.save(this.userMapper.DTOToEntity(userDTO));
-        return this.userMapper.entityToDTO(user);
-    }
-
-    @Override
     public UserDTO findById(final Long id) {
         final User user = this.userRepository.findById(id).orElse(null);
         return this.userMapper.entityToDTO(user);
@@ -39,5 +33,11 @@ public class UserServiceImpl implements UserService {
 
         final List<User> users = this.userRepository.findAll(specification);
         return this.userMapper.entitiesToDTOs(users);
+    }
+
+    @Override
+    public UserDTO create(final UserDTO userDTO) {
+        final User user = this.userRepository.save(this.userMapper.DTOToEntity(userDTO));
+        return this.userMapper.entityToDTO(user);
     }
 }

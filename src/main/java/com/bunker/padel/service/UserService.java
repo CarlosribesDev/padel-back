@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface UserService {
 
-    UserDTO create(final UserDTO userDTO);
-
     UserDTO findById(final Long id);
 
     List<UserDTO> findBySearch(final UserParams params);
+
+    UserDTO create(final UserDTO userDTO);
 }

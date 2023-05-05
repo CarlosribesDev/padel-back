@@ -20,14 +20,9 @@ public class BookingController {
         return ResponseEntity.ok(this.bookingService.findBySearch(params));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<BookingDTO> findById(final @PathVariable Long id) {
-        return ResponseEntity.ok(this.bookingService.findById(id));
-    }
-
-    @PostMapping
-    public ResponseEntity<BookingDTO> create(final @RequestBody BookingDTO bookingDTO) {
-        return ResponseEntity.ok(this.bookingService.save(bookingDTO));
+    @PostMapping("/{id}")
+    public ResponseEntity<BookingDTO> update(final @PathVariable Long id, final @RequestBody BookingDTO bookingDTO) {
+        return ResponseEntity.ok(this.bookingService.update(id, bookingDTO));
     }
 
     @DeleteMapping("/{id}")

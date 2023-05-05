@@ -7,11 +7,9 @@ import java.util.List;
 
 public interface BookingService {
 
-    BookingDTO save(final BookingDTO userDTO);
-
-    BookingDTO findById(final Long id);
-
     List<BookingDTO> findBySearch(final BookingParams params);
+
+    BookingDTO update(final Long id, final BookingDTO userDTO);
 
     void deleteById(final Long id);
 }

@@ -10,6 +10,7 @@ import com.bunker.padel.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,18 +23,6 @@ public class BookingServiceImpl implements BookingService {
 
 
     @Override
-    public BookingDTO save(final BookingDTO userDTO) {
-        final Booking booking = this.bookingRepository.save(this.bookingMapper.DTOToEntity(userDTO));
-        return this.bookingMapper.entityToDTO(booking);
-    }
-
-    @Override
-    public BookingDTO findById(final Long id) {
-        final Booking booking = this.bookingRepository.findById(id).orElse(null);
-        return this.bookingMapper.entityToDTO(booking);
-    }
-
-    @Override
     public List<BookingDTO> findBySearch(final BookingParams params) {
         final LocalDate date = params.getInDate();
         final Specification<Booking> specification =
@@ -42,6 +31,14 @@ public class BookingServiceImpl implements BookingService {
 
         final List<Booking> entities = this.bookingRepository.findAll(specification);
         return this.bookingMapper.entitiesToDTOs(entities);
+    }
+
+    @Override
+    public BookingDTO update(final Long id, final BookingDTO bookingDTO) {
+        Assert.isTrue(id.equals(bookingDTO.getId()), "ID in the DTO does not match the provided ID.");
+
+        final Booking booking = this.bookingRepository.save(this.bookingMapper.DTOToEntity(bookingDTO));
+        return this.bookingMapper.entityToDTO(booking);
     }
 
     @Override
